@@ -4,8 +4,9 @@ import time
 import PoseModule as pm
 
 
-# cap = cv2.VideoCapture("curls.mp4")
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture("curls.mp4")
+# cap = cv2.VideoCapture(0)
+
 
 detector = pm.poseDetector()
 count = 0
@@ -44,27 +45,24 @@ while True:
                 dir = 0
         print(count)
 
-
-        
         # Draw Bar
         cv2.rectangle(img, (1100, 100), (1175, 650), color, 3)
         cv2.rectangle(img, (1100, int(bar)), (1175, 650), color, cv2.FILLED)
         cv2.putText(img, f'{int(per)} %', (1100, 75), cv2.FONT_HERSHEY_PLAIN, 4,
                     color, 4)
 
-       
-
-          # Draw Curl Count
-        cv2.rectangle(img, (0, 450), (250, 720), (0, 255, 0), cv2.FILLED)
-        cv2.putText(img, str(int(count)), (45, 670), cv2.FONT_HERSHEY_PLAIN, 15,
-                    (255, 0, 0), 25)
-        
+        # Draw "Reps: {count}" with smaller text and better alignment
+        cv2.rectangle(img, (10, 500), (350, 600), (0, 255, 0),
+                      cv2.FILLED)  # Adjusted rectangle size
+        cv2.putText(img, f"Reps:{int(count)}/6", (30, 570),
+                    # Adjusted text size
+                    cv2.FONT_HERSHEY_SIMPLEX, 2, (255, 255, 255), 5)
 
         cTime = time.time()
         fps = 1/(cTime-pTime)
         pTime = cTime
-        cv2.putText(img, str(int(fps)), (50, 100), cv2.FONT_HERSHEY_PLAIN, 5,
-                (255, 0, 0), 5)
+        cv2.putText(img, f"fps:{str(int(fps))}", (50, 100), cv2.FONT_HERSHEY_PLAIN, 4,
+                    (255, 0, 0), 5)
 
     cv2.imshow("Image", img)
     cv2.waitKey(1)
