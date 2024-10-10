@@ -2,16 +2,6 @@
 
 This project is an AI-based workout trainer that uses **OpenCV** and **MediaPipe** to track a user's pose and count repetitions during exercises like dumbbell curls. It leverages pose detection to estimate the angles between body joints and calculate exercise reps based on these angles.
 
-## Table of Contents
-
-- [Introduction](#introduction)
-- [Features](#features)
-- [Libraries Used](#libraries-used)
-- [How It Works](#how-it-works)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Example Video](#example-video)
-- [License](#license)
 
 ## Introduction
 
